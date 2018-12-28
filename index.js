@@ -5,43 +5,148 @@ let myarray = [[0,1,2],
               ];
 
 function checkWinner(i,j, win_val, val, cnt){
-      console.log(i,j,cnt);
-      if((i>=0 && i<3) && (j>=0 && j<3) && myarray[i][j]==win_val && cnt>=2){
-         
-         return true;
-      }    
- 
-      if((i>=0 && i<3) && (j>=0 && j<3) && myarray[i][j]==win_val){
-            if(checkWinner(i+1,j, win_val, val, cnt+1)){
- 	            return true;
-            }
-            if(checkWinner(i,j+1, win_val, val, cnt+1)){
- 	            return true;
-            }
-            if(checkWinner(i-1,j, win_val, val, cnt+1)){
-                return true;
-            }
-            
-            if(checkWinner(i,j-1, win_val, val, cnt+1)){
-                return true;
-            }
-            
-            if(checkWinner(i-1,j-1, win_val, val, cnt+1)){
-                return true;
-            }
-           
-            if(checkWinner(i-1,j+1, win_val, val, cnt+1)){
-                return true;
-            }
+      
 
-            if(checkWinner(i+1,j+1, win_val, val, cnt+1)){
+
+        if(i==0 && j==0){
+
+                if(myarray[i+1][j]==win_val && myarray[i+2][j]==win_val){
+                    return true;
+                };
+
+                if(myarray[i][j+1]==win_val && myarray[i][j+2]==win_val){
+                  return true;
+                };
+
+                if(myarray[i+1][j+1]==win_val && myarray[i+2][j+2]==win_val){
+                  return true;
+                };
+
+        }
+
+        else if(i==0 && j==1){
+
+                if(myarray[i][j-1]==win_val && myarray[i][j+1]==win_val){
+                    return true;
+                };
+
+                if(myarray[i+1][j]==win_val && myarray[i+2][j]==win_val){
+                  return true;
+                };
+
+        }
+      
+        else if(i==0 && j==2){
+
+            if(myarray[i][j-1]==win_val && myarray[i][j-2]==win_val){
                 return true;
-            }
-            
-            if(checkWinner(i+1,j-1, win_val, val, cnt+1)){
+            };
+
+            if(myarray[i+1][j]==win_val && myarray[i+2][j]==win_val){
+              return true;
+            };
+
+            if(myarray[i+1][j-1]==win_val && myarray[i+2][j-2]==win_val){
+              return true;
+            };
+
+        
+        }
+
+        else if(i==1 && j==0){
+
+            if(myarray[i-1][j]==win_val && myarray[i+1][j]==win_val){
                 return true;
-            }
-      }
+            };
+
+            if(myarray[i][j+1]==win_val && myarray[i][j+1]==win_val){
+              return true;
+            };
+
+        }
+
+        else if(i==1 && j==1){
+
+
+              if(myarray[i-1][j]==win_val && myarray[i+1][j]==win_val){
+                  return true;
+              };
+
+              if(myarray[i][j-1]==win_val && myarray[i][j+1]==win_val){
+                return true;
+              };
+
+              if(myarray[i-1][j-1]==win_val && myarray[i+1][j+1]==win_val){
+                return true;
+              };
+
+              if(myarray[i-1][j+1]==win_val && myarray[i+1][j-1]==win_val){
+                return true;
+              };      
+
+        
+        }
+
+        else if(i==1 && j==2){
+
+              if(myarray[i][j-1]==win_val && myarray[i][j-2]==win_val){
+                  return true;
+              };
+
+              if(myarray[i+1][j]==win_val && myarray[i-1][j]==win_val){
+                return true;
+              };
+
+             
+
+        }
+
+        else if(i==2 && j==0){
+
+              if(myarray[i-1][j]==win_val && myarray[i-2][j]==win_val){
+                  return true;
+              };
+
+              if(myarray[i][j+1]==win_val && myarray[i][j+2]==win_val){
+                return true;
+              };
+
+              if(myarray[i-1][j+1]==win_val && myarray[i-2][j+2]==win_val){
+                return true;
+              };
+        
+        }
+
+        else if(i==2 && j==1){
+
+              if(myarray[i][j-1]==win_val && myarray[i][j+1]==win_val){
+                  return true;
+              };
+
+              if(myarray[i-1][j]==win_val && myarray[i-2][j]==win_val){
+                return true;
+              };
+
+        
+        }
+
+        else if(i==2 && j==2){
+
+              if(myarray[i-1][j]==win_val && myarray[i-2][j]==win_val){
+                  return true;
+              };
+
+              if(myarray[i][j-1]==win_val && myarray[i][j-2]==win_val){
+                return true;
+              };
+
+              if(myarray[i-1][j-1]==win_val && myarray[i-2][j-2]==win_val){
+                return true;
+              };
+
+        
+        }
+
 }
 
 function updateMyArray(pos_val,val){
@@ -73,6 +178,7 @@ class Square extends React.Component {
       <button
         className="square"
         onClick={() => {
+
              if(counter){
                 if(this.state.value==null){
                     this.setState({ value: 'X' }, function () {
